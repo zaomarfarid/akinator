@@ -23,7 +23,7 @@ CLAUSES
 		write("------------------------------------------------------------------------------"), nl,
 		isEgyptian(E), isAlive(A), isOfficer(O), isPresident(P), isBlack(B), check(E, A, O, P, B).
 		
-	check(E, A, O, P, B):-person(N, E, A, O, P, B), write("Your charachter is: ", N), nl.
+	check(E, A, O, P, B):-person(N, E, A, O, P, B), write("Your charachter is: ", N).
 	check(_, _, _, _, _):-write("NO MATCHES FOUND"), nl.
 	
 	isEgyptian(E):-write("Is he Egyptian?"), nl, readln(E), nl, checkE(E).
