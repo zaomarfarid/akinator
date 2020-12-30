@@ -6,13 +6,15 @@ PREDICATES
 	nondeterm isOfficer(symbol)
 	nondeterm isPresident(symbol)
 	nondeterm isBlack(symbol)
-	nondeterm checkE(symbol).
-	nondeterm checkA(symbol).
-	nondeterm checkO(symbol).
-	nondeterm checkP(symbol).
-	nondeterm checkB(symbol).
-	nondeterm go.
+	nondeterm checkE(symbol)
+	nondeterm checkA(symbol)
+	nondeterm checkO(symbol)
+	nondeterm checkP(symbol)
+	nondeterm checkB(symbol)
+	nondeterm go
 CLAUSES
+	% List of persons facts up to 32 person == 2^5, based on 5 Yes / No questions
+	% 	Name,	isEgyptian, isAlive, isOfficer, isPresident, isBlack
 	person("Anwar Elsadat", yes, no, yes, yes, yes).
 	person("another person", yes, yes, no, no, no).
 	
@@ -24,7 +26,7 @@ CLAUSES
 		isEgyptian(E), isAlive(A), isOfficer(O), isPresident(P), isBlack(B), check(E, A, O, P, B).
 		
 	check(E, A, O, P, B):-person(N, E, A, O, P, B), write("Your charachter is: ", N), nl.
-	check(_, _, _, _, _):-write("NO MATCHES FOUND"), nl.
+	check(_, _, _, _, _):-write("NO MATCHES FOUND!!"), nl.
 	
 	isEgyptian(E):-write("Is he Egyptian?"), nl, readln(E), nl, checkE(E).
 	checkE(yes).
