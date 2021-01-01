@@ -6,25 +6,53 @@ PREDICATES
 	nondeterm isOfficer(symbol)
 	nondeterm isPresident(symbol)
 	nondeterm isBlack(symbol)
-	nondeterm checkE(symbol).
-	nondeterm checkA(symbol).
-	nondeterm checkO(symbol).
-	nondeterm checkP(symbol).
-	nondeterm checkB(symbol).
-	nondeterm go.
+	nondeterm checkE(symbol)
+	nondeterm checkA(symbol)
+	nondeterm checkO(symbol)
+	nondeterm checkP(symbol)
+	nondeterm checkB(symbol)
+	nondeterm go
 CLAUSES
-	person("Anwar Elsadat", yes, no, yes, yes, yes).
-	person("another person", yes, yes, no, no, no).
+	% List of persons facts up to 32 person == 2^5, based on 5 Yes / No questions
+	%	Name,			isEgyptian, isAlive, isOfficer, isPresident, isBlack
+
+	person("Anwar Elsadat",			yes, no , yes, yes, yes).
+	person("Magdi Yacoub",			yes, yes, no , no , no).
+	person("El-Sheikh Zayed",		yes, no , no , yes, no).
+	person("Tom Hardy",			no , yes, no , no , no).
+	person("Abd el Fattah el Sisi",		yes, yes, yes, yes, no).
+	person("Barack Obama",			no , yes, no , yes, yes).
+	person("Hosni Mubarak",			yes, no , yes, yes, no).
+	person("Adolf Hitler",			no , no , yes, yes, no).
+	person("Will Smith",			no , yes, no , no , yes).
+	person("Bob Marly",			no , no , no , no , yes).
+	person("Samia Gamal",			yes, no , no , no , no).
+	person("Micael Jakson",			no , no , no , no , no).
+	person("Abdelmenim ryed",		yes, no , yes, no , yes).
+	person("Nelson Mandela",		no , no , no , yes, yes).
+	person("Faruk Basha",			no , no , no , yes, no).
+	person("Shikabala",			yes, yes, no , yes, no).
+	person("Ahmed Mansy",			yes, no , yes, no , no).
+	person("Ahmed Zaki",			yes, no , no , no , yes).
+	person("Adly mansour",			yes, yes, no , yes, no).
+	person("Bashar Al Assad",		no , yes, no , yes, no).
+	person("Abiy ahmed Ali",		no , yes, no , yes, yes).
+	person("Omar El-Bechir",		no , yes, yes, yes, yes).
+	person("Mohamed Hussein Tantawi",	yes, yes, yes, yes, yes).
+	person("Alexander Fraser",		no , no , yes, no , no).
+	person("Mark Alexander Milley",		no , yes, yes, no , no).
+	person("Abdel Rahman Swar al-Dahab",	no , no , yes, yes, yes).
+	person("Sedki Sobhi",			yes, yes, yes, no , no).
+	person("General Solly Shoke",		no , yes, yes, no , yes).
 	
 	go:-	write("------------------------------------------------------------------------------"), nl,
 		write("Welcome to AKINATOR simulation"), nl,
-		write("Please think about one of the following famous characters"), nl,
-		write("LIST OF CHARACTERS HERE!!"), nl,
+		write("Please think about one of the given famous characters"), nl,
 		write("------------------------------------------------------------------------------"), nl,
 		isEgyptian(E), isAlive(A), isOfficer(O), isPresident(P), isBlack(B), check(E, A, O, P, B).
 		
 	check(E, A, O, P, B):-person(N, E, A, O, P, B), write("Your charachter is: ", N), nl.
-	check(_, _, _, _, _):-write("NO MATCHES FOUND"), nl.
+	check(_, _, _, _, _):-write("NO MATCHES FOUND!!"), nl.
 	
 	isEgyptian(E):-write("Is he Egyptian?"), nl, readln(E), nl, checkE(E).
 	checkE(yes).
