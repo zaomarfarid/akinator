@@ -17,8 +17,8 @@ PREDICATES
 	nondeterm checkR(symbol, symbol)
 	nondeterm go
 CLAUSES
-	% List of persons facts up to 128 person == 2^7, based on 7 Yes / No questions
-	% 	Name, isEgyptian, isAlive, isOfficer, isPresident, isBlack,isplaYer,isactoR
+	% List of facts up to 128 persons == 2^7, based on 7 Yes / No questions
+	% 	Name, isEgyptian, isAlive, isOfficer, isPresident, isBlack, isplaYer, isactoR
 	person("Anwar Elsadat", yes, no, yes, yes, yes, no, no).
 	person("Magdi Yacoub", yes, yes, no, no, no, no, no).
 	person("El-Sheikh Zayed", yes, no, no, yes, no, no, no).
@@ -67,10 +67,11 @@ CLAUSES
 	person("Bruce Lee", no, no, no, no, no, yes, yes).
         person("Adel Emam", yes, yes, no, no, no, no, yes).
 	
-	go:-	write("------------------------------------------------------------------------------"), nl,
+	go:-	write("------------------------------------------------------------------"), nl,
 		write("Welcome to AKINATOR simulation"), nl,
 		write("Please think about one of the given famous characters in the sheet"), nl,
-		write("------------------------------------------------------------------------------"), nl,
+		write("Answer only with yes/no otherwise, you'll be prompted again"), nl,
+		write("------------------------------------------------------------------"), nl,
 		isEgyptian(E), isAlive(A), isOfficer(O), isPresident(P), isBlack(B), isPlaYer(Y), isactoR(R), check(E, A, O, P, B, Y, R).
 		
 	check(E, A, O, P, B, Y, R):-person(N, E, A, O, P, B, Y, R), write("Your charachter is: ", N), nl.
